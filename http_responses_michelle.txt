@@ -1,0 +1,138 @@
+Request:
+
+GET http://127.0.0.1:5000/todo HTTP/1.1
+Authorization: Basic bWFjYWxlc3RlcjpzY290cw==
+
+Response:
+
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.10.0
+Date: Mon, 03 Feb 2025 01:05:42 GMT
+Content-Type: application/json
+Content-Length: 370
+Connection: close
+
+{
+  "tasks": [
+    {
+      "description": "Milk, Cheese, Pizza, Fruit, Tylenol",
+      "done": false,
+      "title": "Buy groceries",
+      "uri": "http://127.0.0.1:5000/todo/1"
+    },
+    {
+      "description": "Need to find a good Python tutorial on the web",
+      "done": false,
+      "title": "Learn Python",
+      "uri": "http://127.0.0.1:5000/todo/2"
+    }
+  ]
+}
+
+Request:
+
+POST http://127.0.0.1:5000/todo HTTP/1.1
+Authorization: Basic bWFjYWxlc3RlcjpzY290cw==
+Content-Type: application/json
+
+{
+  "title": "new task 123",
+  "description": "read a book"
+}
+
+Response:
+
+HTTP/1.1 201 CREATED
+Server: Werkzeug/3.1.3 Python/3.10.0
+Date: Mon, 03 Feb 2025 02:56:37 GMT
+Content-Type: application/json
+Content-Length: 144
+Connection: close
+
+{
+  "task": {
+    "description": "read a book",
+    "done": false,
+    "title": "new task 123",
+    "uri": "http://127.0.0.1:5000/todo/3"
+  }
+}
+
+Request:
+
+PUT http://127.0.0.1:5000/todo/2 HTTP/1.1
+Authorization: Basic bWFjYWxlc3RlcjpzY290cw==
+Content-Type: application/json
+
+{
+  "done": true
+}
+
+Response:
+
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.10.0
+Date: Mon, 03 Feb 2025 03:17:58 GMT
+Content-Type: application/json
+Content-Length: 178
+Connection: close
+
+{
+  "task": {
+    "description": "Need to find a good Python tutorial on the web",
+    "done": true,
+    "title": "Learn Python",
+    "uri": "http://127.0.0.1:5000/todo/2"
+  }
+}
+
+Request:
+
+DELETE http://127.0.0.1:5000/todo/1 HTTP/1.1
+Authorization: Basic bWFjYWxlc3RlcjpzY290cw==
+
+Response:
+
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.10.0
+Date: Mon, 03 Feb 2025 03:19:29 GMT
+Content-Type: application/json
+Content-Length: 21
+Connection: close
+
+{
+  "result": true
+}
+
+Checking:
+
+Request:
+
+GET http://127.0.0.1:5000/todo HTTP/1.1
+Authorization: Basic bWFjYWxlc3RlcjpzY290cw==
+
+Response:
+
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.10.0
+Date: Mon, 03 Feb 2025 03:20:31 GMT
+Content-Type: application/json
+Content-Length: 344
+Connection: close
+
+{
+  "tasks": [
+    {
+      "description": "Need to find a good Python tutorial on the web",
+      "done": true,
+      "title": "Learn Python",
+      "uri": "http://127.0.0.1:5000/todo/2"
+    },
+    {
+      "description": "read a book",
+      "done": false,
+      "title": "new task 123",
+      "uri": "http://127.0.0.1:5000/todo/3"
+    }
+  ]
+}
